@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import ContextTypes
-from luke_thebot.db.model import users_count, set_admin, is_admin
+from luke_thebot.db.model import users_count, set_admin, is_admin, user_exists, create_user
 from luke_thebot.bot.permission import user_have_access
 
 async def handler_welcome_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -11,6 +11,9 @@ async def handler_welcome_message(update: Update, context: ContextTypes.DEFAULT_
     if not user_have_access(username):
         await update.message.reply_text(f"Your username {username} dont have access to this bot.")
         return
+    
+    if not user_exists(username):
+        create_user(username)
 
     welcome_msg = (
         "Welcome to Luke The BOT.\n"
