@@ -1,0 +1,7 @@
+peewee>=3.0,<4.0
+python-telegram-bot>=21
+playwright
+yt-dlp
+gallery-dl
+python-dotenv
+nest-asyncio 

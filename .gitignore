@@ -1,2 +1,4 @@
 .history
-db
+sqlite.db
+__pycache__/
+.env
